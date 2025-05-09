@@ -41,6 +41,9 @@ struct ContentView: View {
                         .background(Color.orange)
                         .cornerRadius(10)
                 }
+                Text("Twoje BMI wynosi: \(scoreBMI)")
+                    .padding()
+                    .font(.title3)
             }
             .padding()
         }
