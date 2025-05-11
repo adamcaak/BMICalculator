@@ -24,7 +24,7 @@ struct ContentView: View {
                     Button(action: {
                         //Logic
                     }) {
-                        Text("Men")
+                        Text("MEN")
                             .padding()
                             .frame(width: 100, height: 100)
                             .background(Color.orange)
@@ -35,7 +35,7 @@ struct ContentView: View {
                     Button(action: {
                         //Logic
                     }) {
-                        Text("Women")
+                        Text("WOMEN")
                             .padding()
                             .frame(width: 100, height: 100)
                             .background(Color.orange)
