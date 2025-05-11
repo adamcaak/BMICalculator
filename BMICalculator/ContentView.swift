@@ -19,18 +19,44 @@ struct ContentView: View {
                     .font(.largeTitle)
                     .bold()
                     .padding()
+                
+                HStack(spacing: 50) {
+                    Button(action: {
+                        //Logic
+                    }) {
+                        Text("Men")
+                            .padding()
+                            .frame(width: 100, height: 100)
+                            .background(Color.orange)
+                            .cornerRadius(10)
+                            .foregroundColor(.white)
+                    }
+                    
+                    Button(action: {
+                        //Logic
+                    }) {
+                        Text("Women")
+                            .padding()
+                            .frame(width: 100, height: 100)
+                            .background(Color.orange)
+                            .cornerRadius(10)
+                            .foregroundColor(.white)
+                    }
+                }
                 TextField("Waga", text: $weight)
                     .padding()
                     .keyboardType(.decimalPad)
                     .background(Color(.gray).opacity(0.2))
                     .foregroundColor(.black)
                     .cornerRadius(10)
+                
                 TextField("Wzrost", text: $height)
                     .padding()
                     .keyboardType(.decimalPad)
                     .background(Color(.gray).opacity(0.2))
                     .foregroundColor(.black)
                     .cornerRadius(10)
+                
                 Button(action: {
                     if let weightValue = Double(weight), let heightValue = Double(height) {
                         let heightInMeters = heightValue / 100
@@ -44,6 +70,7 @@ struct ContentView: View {
                         .background(Color.orange)
                         .cornerRadius(10)
                 }
+                
                 Text(String(format: "Twoje BMI to: %.1f", scoreBMI))
                     .padding()
                     .font(.title3)
