@@ -29,7 +29,7 @@ struct ContentView: View {
                         Text("MEN")
                             .padding()
                             .frame(width: 100, height: 100)
-                            .background(Color.orange)
+                            .background(selectGender == "MEN" ? Color.green : Color.orange)
                             .cornerRadius(10)
                             .foregroundColor(.white)
                     }
@@ -40,7 +40,7 @@ struct ContentView: View {
                         Text("WOMEN")
                             .padding()
                             .frame(width: 100, height: 100)
-                            .background(Color.orange)
+                            .background(selectGender == "WOMEN" ? Color.green : Color.orange)
                             .cornerRadius(10)
                             .foregroundColor(.white)
                     }
