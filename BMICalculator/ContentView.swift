@@ -20,7 +20,7 @@ struct ContentView: View {
                     .bold()
                     .padding()
                 
-                HStack(spacing: 50) {
+                HStack(spacing: 30) {
                     Button(action: {
                         //Logic
                     }) {
