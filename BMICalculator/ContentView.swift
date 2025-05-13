@@ -64,6 +64,7 @@ struct ContentView: View {
                         let heightInMeters = heightValue / 100
                         let scoreBMI = weightValue / (heightInMeters * heightInMeters)
                         self.scoreBMI = scoreBMI
+                        showResult = true
                     }
                 }) {
                     Text("Oblicz BMI")
@@ -72,10 +73,6 @@ struct ContentView: View {
                         .background(Color.orange)
                         .cornerRadius(10)
                 }
-                
-                Text(String(format: "Twoje BMI to: %.1f", scoreBMI))
-                    .padding()
-                    .font(.title3)
             }
             .padding()
         }
