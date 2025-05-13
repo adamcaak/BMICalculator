@@ -21,6 +21,7 @@ struct ContentView: View {
                     .font(.largeTitle)
                     .bold()
                     .padding()
+                    .padding(.bottom, 80)
                 
                 HStack(spacing: 30) {
                     Button(action: {
