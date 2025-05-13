@@ -11,6 +11,8 @@ struct ContentView: View {
     @State private var weight: String = ""
     @State private var height: String = ""
     @State private var scoreBMI: Double = 0.0
+    @State private var selectGender: String = ""
+    @State private var showResult: Bool = false
     
     var body: some View {
         NavigationView {
@@ -22,7 +24,7 @@ struct ContentView: View {
                 
                 HStack(spacing: 30) {
                     Button(action: {
-                        //Logic
+                        selectGender = "MEN"
                     }) {
                         Text("MEN")
                             .padding()
@@ -33,7 +35,7 @@ struct ContentView: View {
                     }
                     
                     Button(action: {
-                        //Logic
+                        selectGender = "WOMEN"
                     }) {
                         Text("WOMEN")
                             .padding()
@@ -76,6 +78,9 @@ struct ContentView: View {
                     .font(.title3)
             }
             .padding()
+        }
+        .sheet(isPresented: $showResult) {
+            ResultView(bmi: scoreBMI, gender: selectGender)
         }
     }
 }
