@@ -23,7 +23,7 @@ struct ResultView: View {
                 .font(.largeTitle)
                 .bold()
             
-            Text(String(format: "Twoje BMI to: %.1f", bmi))
+            Text(String(format: "Twoje BMI to: %.1f", scoreBMI))
                 .padding()
                 .font(.title3)
             
