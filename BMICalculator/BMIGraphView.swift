@@ -9,45 +9,28 @@ import SwiftUI
 
 struct BMIGraphView: View {
     var bmi: Double
-    @State private var offset: CGFloat = 0
+    //@State private var offset: CGFloat = 0
     
     var body: some View {
         GeometryReader { geometry in
             let totalWidth: CGFloat = geometry.size.width
+            let segmentCount: CGFloat = 5
             let relativeBMI = min(max(bmi, 0), 40)
-            let targetOffset = (relativeBMI / 40.0) * totalWidth
+            let offset = (relativeBMI / 40.0) * totalWidth
             
             ZStack(alignment: .topLeading) {
                 Image(systemName: "arrowtriangle.down.fill")
                     .offset(x: offset - 8, y: -10)
                     .foregroundColor(.black)
                     .shadow(radius: 2)
-                    .onAppear {
-                        withAnimation(.easeInOut(duration: 0.5)) {
-                            self.offset = targetOffset
-                        }
-                    }
-                    .onChange(of: bmi) { withAnimation(.easeInOut(duration: 0.5)) {
-                        self.offset = (bmi / 40.0) * totalWidth
-                    }
-                    }
+                    .animation(.easeInOut(duration: 0.5), value: offset)
                 VStack(spacing: 5) {
                     HStack(spacing: 0) {
-                        Rectangle()
-                            .frame(width: totalWidth / 5, height: 40)
-                            .foregroundColor(.blue)
-                        Rectangle()
-                            .frame(width: totalWidth / 5, height: 40)
-                            .foregroundColor(.green)
-                        Rectangle()
-                            .frame(width: totalWidth / 5, height: 40)
-                            .foregroundColor(.yellow)
-                        Rectangle()
-                            .frame(width: totalWidth / 5, height: 40)
-                            .foregroundColor(.orange)
-                        Rectangle()
-                            .frame(width: totalWidth / 5, height: 40)
-                            .foregroundColor(.red)
+                        ForEach(0..<5) { index in
+                            Rectangle()
+                                .frame(width: totalWidth / segmentCount, height: 40)
+                                .foregroundColor(color(for: index))
+                        }
                     }
                     HStack(spacing: 0) {
                         Text("Niedowaga")
@@ -82,6 +65,17 @@ struct BMIGraphView: View {
         }
         .frame(height: 100)
         .padding(.horizontal)
+    }
+    
+    func color(for index: Int) -> Color {
+        switch index {
+        case 0: return .blue
+        case 1: return .green
+        case 2: return .yellow
+        case 3: return .orange
+        case 4: return .red
+        default: return .gray
+        }
     }
 }
 
