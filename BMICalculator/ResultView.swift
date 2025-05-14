@@ -27,6 +27,14 @@ struct ResultView: View {
                 .padding()
                 .font(.title3)
             
+            if gender == "MEN" {
+                Text("Interpolacja dla mężczyzn: \(interpolationForMen())")
+            } else if gender == "WOMEN" {
+                Text("Interpolacja dla kobiet: \(interpolationForWomen())")
+            } else {
+                Text("Nie wybrano płci")
+            }
+            
             Button("Reset") {
                 weight = ""
                 height = ""
@@ -38,15 +46,6 @@ struct ResultView: View {
             .foregroundColor(.white)
             .background(Color.orange)
             .cornerRadius(10)
-            
-            
-            if gender == "MEN" {
-                Text("Interpolacja dla mężczyzn: \(interpolationForMen())")
-            } else if gender == "WOMEN" {
-                Text("Interpolacja dla kobiet: \(interpolationForWomen())")
-            } else {
-                Text("Nie wybrano płci")
-            }
         }
         .padding()
     }
