@@ -99,9 +99,9 @@ struct ResultView: View {
 }
 
 struct PreviewResultWrapper: View {
-    @State private var weight: String = "75"
+    @State private var weight: String = "70"
     @State private var height: String = "180"
-    @State private var scoreBMI: Double = 22.0
+    @State private var scoreBMI: Double = 21.6
     @State private var selectGender: String = "MEN"
     @State private var showResult: Bool = true
     

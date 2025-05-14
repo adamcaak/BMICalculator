@@ -27,10 +27,9 @@ struct BMIGraphView: View {
                             self.offset = targetOffset
                         }
                     }
-                    .onChange(of: bmi) { newBmi in
-                        withAnimation(.easeInOut(duration: 0.5)) {
-                            self.offset = (newBmi / 40.0) * totalWidth
-                        }
+                    .onChange(of: bmi) { withAnimation(.easeInOut(duration: 0.5)) {
+                        self.offset = (bmi / 40.0) * totalWidth
+                    }
                     }
                 VStack(spacing: 5) {
                     HStack(spacing: 0) {
