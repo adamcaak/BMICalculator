@@ -28,12 +28,21 @@ struct ResultView: View {
                 .font(.title3)
             
             if gender == "MEN" {
-                Text("Interpolacja dla mężczyzn: \(interpolationForMen())")
+                let result = interpolationForMen()
+                Text(result.text)
+                    .font(.headline)
+                    .foregroundColor(result.color)
             } else if gender == "WOMEN" {
-                Text("Interpolacja dla kobiet: \(interpolationForWomen())")
+                let result = interpolationForWomen()
+                Text(result.text)
+                    .font(.headline)
+                    .foregroundColor(result.color)
             } else {
                 Text("Nie wybrano płci")
+                    .foregroundColor(.gray)
             }
+            
+            BMIGraphView(bmi: scoreBMI)
             
             Button("Reset") {
                 weight = ""
@@ -50,37 +59,37 @@ struct ResultView: View {
         .padding()
     }
     
-    func interpolationForMen() -> String {
+    func interpolationForMen() -> (text: String, color: Color) {
         switch bmi {
         case ..<18.5:
-            return "Niedowaga"
+            return ("Niedowaga", .blue)
         case 18.5...24.9:
-            return "Waga normalna"
+            return ("Waga normalna", .green)
         case 25...29.9:
-            return "Nadwaga"
+            return ("Nadwaga", .yellow)
         case 30...34.9:
-            return "Otyłość I stopnia"
+            return ("Otyłość I stopnia", .orange)
         case 35...39.9:
-            return "Otyłość II stopnia"
+            return ("Otyłość II stopnia", .red)
         default:
-            return "Otyłość III stopnia"
+            return ("Otyłość III stopnia", .red)
         }
     }
     
-    func interpolationForWomen() -> String {
+    func interpolationForWomen() -> (text: String, color: Color) {
         switch bmi {
         case ..<18.0:
-            return "Niedowaga"
+            return ("Niedowaga", .blue)
         case 18.0...24.9:
-            return "Waga normalna"
+            return ("Waga normalna", .green)
         case 25...29.9:
-            return "Nadwaga"
+            return ("Nadwaga", .yellow)
         case 30...34.9:
-            return "Otyłość I stopnia"
+            return ("Otyłość I stopnia", .orange)
         case 35...39.9:
-            return "Otyłość II stopnia"
+            return ("Otyłość II stopnia", .red)
         default:
-            return "Otyłość III stopnia"
+            return ("Otyłość III stopnia", .red)
         }
     }
 }
@@ -92,7 +101,7 @@ struct ResultView: View {
 struct PreviewResultWrapper: View {
     @State private var weight: String = "75"
     @State private var height: String = "180"
-    @State private var scoreBMI: Double = 26.0
+    @State private var scoreBMI: Double = 22.0
     @State private var selectGender: String = "MEN"
     @State private var showResult: Bool = true
     
