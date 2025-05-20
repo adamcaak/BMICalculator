@@ -9,7 +9,14 @@ import SwiftUI
 
 struct SettingsView: View {
     var body: some View {
-        Text("Settings View")
+        VStack {
+            Text("Ustawienia")
+                .font(.title)
+            Text("Tu będzie możliwość zmiany jednostek, motywu itp.")
+                .foregroundColor(.secondary)
+                .multilineTextAlignment(.center)
+                .padding()
+        }
     }
 }
 
