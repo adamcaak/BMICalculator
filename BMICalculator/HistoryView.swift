@@ -9,7 +9,14 @@ import SwiftUI
 
 struct HistoryView: View {
     var body: some View {
-        Text("History View")
+        VStack {
+            Text("Historia pomiarów")
+                .font(.title)
+            Text("Tu w przyszłości pokażemy Twoje wcześniejsze wyniki BMI.")
+                .foregroundColor(.secondary)
+                .multilineTextAlignment(.center)
+                .padding()
+        }
     }
 }
 
