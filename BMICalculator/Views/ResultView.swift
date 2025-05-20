@@ -16,15 +16,22 @@ struct ResultView: View {
                 .font(.largeTitle)
                 .bold()
             
-            Text(String(format: "Twoje BMI to: %.1f", viewModel.bmi))
+            Text(String(format: "Twoje BMI to: %.1f", viewModel.scoreBMI))
                 .padding()
                 .font(.title3)
             
-            Text(viewModel.resultText.text)
-                .font(.headline)
-                .foregroundColor(viewModel.resultText.color)
+            let result = BMIResult(bmi: viewModel.scoreBMI, gender: viewModel.gender)
+            let description = viewModel.gender == "MEN" ?
+                result.interpolationForMen() :
+                viewModel.gender == "WOMEN" ?
+                result.interpolationForWomen() :
+                ("Nie wybrano płci", Color.gray)
             
-            BMIGraphView(bmi: viewModel.bmi)
+            Text(description.0)
+                .font(.headline)
+                .foregroundColor(description.1)
+            
+            BMIGraphView(bmi: viewModel.scoreBMI)
             
             Button("Reset") {
                 viewModel.reset()
@@ -39,12 +46,20 @@ struct ResultView: View {
 }
 
 #Preview {
-    ResultView(viewModel: {
-        let vm = BMIViewModel()
-        vm.weight = "70"
-        vm.height = "180"
-        vm.gender = "MEN"
-        vm.showResult = true
-        return vm
-    }())
+    ResultPreviewWrapper()
+}
+
+struct ResultPreviewWrapper: View {
+    @StateObject var viewModel = BMIViewModel()
+
+    var body: some View {
+        // Przykładowe dane do podglądu
+        viewModel.weight = "70"
+        viewModel.height = "180"
+        viewModel.gender = "MEN"
+        viewModel.scoreBMI = 21.6
+        viewModel.showResult = true
+        
+        return ResultView(viewModel: viewModel)
+    }
 }

@@ -8,11 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var weight: String = ""
-    @State private var height: String = ""
-    @State private var scoreBMI: Double = 0.0
-    @State private var selectGender: String = ""
-    @State private var showResult: Bool = false
+    @StateObject private var viewModel = BMIViewModel()
     
     var body: some View {
         NavigationView {
@@ -20,64 +16,55 @@ struct ContentView: View {
                 Text("BMI Calculator")
                     .font(.largeTitle)
                     .bold()
-                    .padding()
                     .padding(.bottom, 80)
                 
                 HStack(spacing: 30) {
-                    Button(action: {
-                        selectGender = "MEN"
-                    }) {
-                        Text("MEN")
-                            .padding()
-                            .frame(width: 100, height: 100)
-                            .background(selectGender == "MEN" ? Color.green : Color.orange)
-                            .cornerRadius(10)
-                            .foregroundColor(.white)
+                    genderButton(title: "MEN", selected: viewModel.gender == "MEN") {
+                        viewModel.gender = "MEN"
                     }
-                    
-                    Button(action: {
-                        selectGender = "WOMEN"
-                    }) {
-                        Text("WOMEN")
-                            .padding()
-                            .frame(width: 100, height: 100)
-                            .background(selectGender == "WOMEN" ? Color.green : Color.orange)
-                            .cornerRadius(10)
-                            .foregroundColor(.white)
+                    genderButton(title: "WOMEN", selected: viewModel.gender == "WOMEN") {
+                        viewModel.gender = "WOMEN"
                     }
                 }
-                TextField("Waga", text: $weight)
+                
+                TextField("Waga", text: $viewModel.weight)
                     .padding()
                     .keyboardType(.decimalPad)
                     .background(Color(.gray).opacity(0.2))
-                    .foregroundColor(.black)
                     .cornerRadius(10)
                 
-                TextField("Wzrost", text: $height)
+                TextField("Wzrost", text: $viewModel.height)
                     .padding()
                     .keyboardType(.decimalPad)
                     .background(Color(.gray).opacity(0.2))
-                    .foregroundColor(.black)
                     .cornerRadius(10)
                 
-                Button(action: {
-                    
-                }) {
-                    Text("Oblicz BMI")
-                        .padding()
-                        .foregroundColor(.white)
-                        .background(Color.orange)
-                        .cornerRadius(10)
+                Button("Oblicz BMI") {
+                    viewModel.calculateBMI
                 }
+                .padding()
+                .foregroundColor(.white)
+                .background(Color.orange)
+                .cornerRadius(10)
             }
             .padding()
         }
-        .sheet(isPresented: $showResult) {
-            ResultView(viewModel: BMIViewModel())
+        .sheet(isPresented: $viewModel.showResult) {
+            ResultView(viewModel: viewModel)
+        }
+    }
+    
+    private func genderButton(title: String, selected: Bool, action: @escaping () -> Void) -> some View {
+        Button(action: action) {
+            Text(title)
+                .padding()
+                .frame(width: 100, height: 100)
+                .background(selected ? Color.green : Color.orange)
+                .cornerRadius(10)
+                .foregroundColor(.white)
         }
     }
 }
-
 #Preview {
     ContentView()
 }
