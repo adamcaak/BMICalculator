@@ -21,10 +21,6 @@ struct MainTabView: View {
                     Label("BMI Calculator", systemImage: "person.circle")
                 }
             
-            ResultView(viewModel: BMIViewModel())
-                .tabItem {
-                    Label("Result", systemImage: "list.bullet.circle")
-                }
             HistoryView()
                 .tabItem {
                     Label("History", systemImage: "clock.arrow.circlepath")
