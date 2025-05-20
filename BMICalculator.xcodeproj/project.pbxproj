@@ -11,7 +11,7 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		BB233FEF2DCE9FB300CE65E2 /* BMICalculator */ = {
+		BB239A032DDC9B98000FBA1D /* BMICalculator */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = BMICalculator;
 			sourceTree = "<group>";
@@ -32,7 +32,7 @@
 		BB233FE42DCE9FB200CE65E2 = {
 			isa = PBXGroup;
 			children = (
-				BB233FEF2DCE9FB300CE65E2 /* BMICalculator */,
+				BB239A032DDC9B98000FBA1D /* BMICalculator */,
 				BB233FEE2DCE9FB200CE65E2 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -61,7 +61,7 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				BB233FEF2DCE9FB300CE65E2 /* BMICalculator */,
+				BB239A032DDC9B98000FBA1D /* BMICalculator */,
 			);
 			name = BMICalculator;
 			packageProductDependencies = (

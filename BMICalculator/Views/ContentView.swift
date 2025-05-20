@@ -78,13 +78,7 @@ struct ContentView: View {
             .padding()
         }
         .sheet(isPresented: $showResult) {
-            ResultView(weight: $weight,
-                       height: $height,
-                       scoreBMI: $scoreBMI,
-                       selectGender: $selectGender,
-                       showResult: $showResult,
-                       bmi: scoreBMI,
-                       gender: selectGender)
+            ResultView(viewModel: BMIViewModel())
         }
     }
 }

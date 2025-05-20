@@ -21,7 +21,7 @@ struct MainTabView: View {
                     Label("BMI Calculator", systemImage: "person.circle")
                 }
             
-            ResultView(weight: $weight, height: $height, scoreBMI: $scoreBMI, selectGender: $selectGender, showResult: $showResult, bmi: scoreBMI, gender: selectGender)
+            ResultView(viewModel: BMIViewModel())
                 .tabItem {
                     Label("Result", systemImage: "list.bullet.circle")
                 }
