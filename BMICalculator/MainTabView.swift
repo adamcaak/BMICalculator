@@ -8,23 +8,32 @@
 import SwiftUI
 
 struct MainTabView: View {
+    @State private var weight: String = ""
+    @State private var height: String = ""
+    @State private var scoreBMI: Double = 0
+    @State private var selectGender: String = ""
+    @State private var showResult: Bool = false
+    
     var body: some View {
         TabView {
-            ResultView()
+            ContentView()
                 .tabItem {
-                    Label("Result", systemImage: "person.circle")
+                    Label("BMI Calculator", systemImage: "person.circle")
                 }
-            HistoryView() {
+            
+            ResultView(weight: $weight, height: $height, scoreBMI: $scoreBMI, selectGender: $selectGender, showResult: $showResult, bmi: scoreBMI, gender: selectGender)
+                .tabItem {
+                    Label("Result", systemImage: "list.bullet.circle")
+                }
+            HistoryView()
                 .tabItem {
                     Label("History", systemImage: "clock.arrow.circlepath")
                 }
-            }
             
-            SettingsView() {
+            SettingsView()
                 .tabItem {
                     Label("Settings", systemImage: "gearshape")
                 }
-            }
         }
     }
 }

@@ -1,5 +1,5 @@
 //
-//  SettingsView.swift
+//  HistoryView.swift
 //  BMICalculator
 //
 //  Created by Łukasz Adamczak on 20/05/2025.
@@ -7,12 +7,12 @@
 
 import SwiftUI
 
-struct SettingsView: View {
+struct HistoryView: View {
     var body: some View {
-        Text("Settings View")
+        Text("History View")
     }
 }
 
 #Preview {
-    SettingsView()
+    HistoryView()
 }
