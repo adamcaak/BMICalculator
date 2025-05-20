@@ -61,12 +61,7 @@ struct ContentView: View {
                     .cornerRadius(10)
                 
                 Button(action: {
-                    if let weightValue = Double(weight), let heightValue = Double(height) {
-                        let heightInMeters = heightValue / 100
-                        let scoreBMI = weightValue / (heightInMeters * heightInMeters)
-                        self.scoreBMI = scoreBMI
-                        showResult = true
-                    }
+                    
                 }) {
                     Text("Oblicz BMI")
                         .padding()
