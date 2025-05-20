@@ -38,14 +38,22 @@ struct ContentView: View {
                     .keyboardType(.decimalPad)
                     .background(Color(.gray).opacity(0.2))
                     .cornerRadius(10)
-                
-                Button("Oblicz BMI") {
-                    viewModel.calculateBMI
-                }
-                .padding()
-                .foregroundColor(.white)
-                .background(Color.orange)
-                .cornerRadius(10)
+                Button(action: {
+                    viewModel.calculateBMI()
+                }, label: {
+                    Text("Oblicz BMI")
+                        .padding()
+                        .foregroundColor(.white)
+                        .background(Color.orange)
+                        .cornerRadius(10)
+                })
+                //                Button("Oblicz BMI") {
+                //                    viewModel.calculateBMI()
+                //                }
+                //                .padding()
+                //                .foregroundColor(.white)
+                //                .background(Color.orange)
+                //                .cornerRadius(10)
             }
             .padding()
         }

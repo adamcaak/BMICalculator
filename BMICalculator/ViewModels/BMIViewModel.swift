@@ -11,16 +11,17 @@ class BMIViewModel: ObservableObject {
     @Published var weight: String = ""
     @Published var height: String = ""
     @Published var gender: String = ""
+    @Published var scoreBMI: Double = 0.0
     @Published var showResult: Bool = false
     
-    var calculateBMI: Double {
+    func calculateBMI() -> Double {
         guard let weight = Double(weight), let height = Double(height), height > 0 else { return 0 }
         let heightInMeters = height / 100
         return weight / (heightInMeters * heightInMeters)
     }
     
     var bmiResult: BMIResult {
-        BMIResult(bmi: calculateBMI, gender: gender)
+        BMIResult(bmi: calculateBMI(), gender: gender)
     }
     
     var resultText: (text: String, color: Color) {
